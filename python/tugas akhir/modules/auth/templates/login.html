@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='auth.css') }}">
+</head>
+<body>
+  <div class="banner">
+    <form action="{{ url_for('app_auth.login') }}" method="POST">
+          <div class="login-form">
+            <div class="logo">
+              <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo">
+            </div>
+            <div class="input-container">
+              <input type="text" placeholder="Username" id="username" name="username" required>
+            </div>
+            <div class="input-container">
+              <input type="password" placeholder="Password" id="password" name="password" required>
+            </div>
+            <br>
+            <input type="submit" value="Log in" class="submit-button">
+          </div>
+  </div>
+    </form>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <p class="{{ category }}">{{ message }}</p>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+</body>
+</html>

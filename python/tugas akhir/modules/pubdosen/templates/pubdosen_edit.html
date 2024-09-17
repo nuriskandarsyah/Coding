@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Pubdosen</title>
+    <link rel="stylesheet" href="/static/index.css" />
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="logo">
+                <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo">
+            </div>
+            <nav class="menu">
+                <ul>
+                    <li><a href="/user">Lihat Data Keseluruhan User</a></li>
+                    <li><a href="/mahasiswa">Lihat Data Mahasiswa</a></li>
+                    <li><a href="/dosen">Lihat Data Dosen</a></li>
+                    <li><a href="/mk">Lihat Data Mata Kuliah</a></li>
+                    <li><a href="/admin">Lihat Data Admin</a></li>
+                    <li><a href="/pubdosen">Lihat Publikasi Dosen</a></li>
+                    <li><a href="/bimbingan">Lihat Data Bimbingan</a></li>
+                    <li><a href="/kalender_akademik">Lihat Kalender Akademik</a></li>
+                </ul>
+            </nav>
+            <div class="logout">
+                <box-icon><a href="/login"><i class='bx bx-log-out'></i>&nbsp;&nbsp;Log out</a></box-icon>
+            </div>
+        </aside>
+        <section class="container-content">
+            <h3>Edit Pubdosen</h3><br>
+            <a href="/pubdosen"><button>Kembali</button></a><br>
+            <div class="container-table">
+                <form action="/pubdosen/update/{{ obj.pub_id }}" method="POST" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <div class="group">
+                            <input type="text" id="dosen_id" name="dosen_id" required value="{{ obj.dosen_id }}">
+                            <span class="highlight"></span><span class="bar"></span>
+                            <label for="dosen_id">ID Dosen:</label>
+                        </div>
+                        <div class="group">
+                            <input type="text" id="judul" name="judul" required value="{{ obj.judul }}">
+                            <span class="highlight"></span><span class="bar"></span>
+                            <label for="judul">Judul:</label>
+                        </div>
+                        <div class="group"><br><br>
+                            {% if obj.jurnal %}
+                                <p>File Jurnal Saat Ini:</p>
+                                <a href="{{ url_for('static', filename='uploads/' ~ obj.jurnal) }}" target="_blank">{{ obj.jurnal }}</a>
+                            {% endif %}
+                            <input type="file" id="jurnal" name="jurnal">
+                            <span class="highlight"></span><span class="bar"></span>
+                            <label for="jurnal">Jurnal:</label>
+                        </div>
+                        <div class="group">
+                            <div class="date-container"><br><br>
+                            <input type="date" id="tgl_terbit" name="tgl_terbit" required value="{{ obj.tgl_terbit }}">
+                            <span class="highlight"></span><span class="bar"></span>
+                            <label for="tgl_terbit">Tanggal Terbit:</label>
+                        </div>
+                    </div>
+                    <input type="submit" value="Submit" class="submit-button">
+                </form>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
