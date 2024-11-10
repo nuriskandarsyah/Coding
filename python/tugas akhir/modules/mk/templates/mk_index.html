@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data User</title>
+    <link rel="stylesheet" href="/static/index.css" />
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="logo">
+                <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo">
+            </div>
+            <nav class="menu">
+                <ul>
+                    <li><a href="/user">Lihat Data Keseluruhan User</a></li>
+                    <li><a href="/mahasiswa">Lihat Data Mahasiswa</a></li>
+                    <li><a href="/dosen">Lihat Data Dosen</a></li>
+                    <li><a href="/mk">Lihat Data Mata Kuliah</a></li>
+                    <li><a href="/admin">Lihat Data Admin</a></li>
+                    <li><a href="/pubdosen">Lihat Publikasi Dosen</a></li>
+                    <li><a href="/bimbingan">Lihat Data Bimbingan</a></li>
+                    <li><a href="/kalender_akademik">Lihat Kalender Akademik</a></li>
+                </ul>
+            </nav>
+            <div class="logout">
+                <box-icon><a href="/login"><i class='bx bx-log-out'></i>&nbsp;&nbsp;Log out</a></box-icon>
+            </div>
+        </aside>
+        <section class="container-content">
+            <h3>Data Mata Kuliah</h3><br>
+            <a href="/mk/create"><button>Tambah</button></a><br>
+            <a href="/"><button>Kembali</button></a><br><br>
+            <div class="container-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID Mata Kuliah</th>
+                            <th>Nama Mata Kuliah</th>
+                            <th colspan="2">Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for obj in data %}
+                        <tr>
+                            <td>{{ obj.mk_id }}</td>
+                            <td>{{ obj.matkul }}</td>
+                            <td><a href="/mk/edit/{{ obj.mk_id }}" class="edit-button">Edit</a></td>
+                            <td><a href="/mk/delete/{{ obj.mk_id }}" title="delete" class="delete-button" onclick="return confirm('Anda yakin untuk menghapus data ini?')">Hapus</a></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

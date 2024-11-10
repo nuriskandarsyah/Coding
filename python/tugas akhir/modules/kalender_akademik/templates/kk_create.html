@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tambah Kegiatan</title>
+    <link rel="stylesheet" href="/static/index.css" />
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="logo">
+                <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo">
+            </div>
+            <nav class="menu">
+                <ul>
+                    <li><a href="/user">Lihat Data Keseluruhan User</a></li>
+                    <li><a href="/mahasiswa">Lihat Data Mahasiswa</a></li>
+                    <li><a href="/dosen">Lihat Data Dosen</a></li>
+                    <li><a href="/mk">Lihat Data Mata Kuliah</a></li>
+                    <li><a href="/admin">Lihat Data Admin</a></li>
+                    <li><a href="/pubdosen">Lihat Publikasi Dosen</a></li>
+                    <li><a href="/bimbingan">Lihat Data Bimbingan</a></li>
+                    <li><a href="/kalender_akademik">Lihat Kalender Akademik</a></li>
+                </ul>
+            </nav>
+            <div class="logout">
+                <box-icon><a href="/login"><i class='bx bx-log-out'></i>&nbsp;&nbsp;Log out</a></box-icon>
+            </div>
+        </aside>
+        <section class="container-content">
+            <h3>Tambah Kegiatan</h3><br>
+            <a href="/kalender_akademik"><button>Kembali</button></a><br>
+            <div class="container-table">
+                <form action="/kalender_akademik/store" method="POST">
+                    <div class="form-group">
+                        <div class="group">
+                            <input type="text" id="kegiatan" name="kegiatan" required />
+                            <span class="highlight"></span><span class="bar"></span>
+                            <label for="kegiatan">Kegiatan</label>
+                        </div>
+                        <div class="group"><br><br>
+                            <input type="datetime-local" id="waktu" name="waktu" required />
+                            <span class="highlight"></span><span class="bar"></span>
+                            <label for="waktu">Waktu</label>
+                        </div>
+                    </div>
+                    <input type="submit" value="Submit" class="submit-button">
+                </form>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
