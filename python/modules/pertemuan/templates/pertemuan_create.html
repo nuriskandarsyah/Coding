@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Tambah Pertemuan</title>
+        <link rel="stylesheet" href="/static/index.css" />
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="logo">
+                <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo">
+            </div>
+            <nav class="menu">
+                <ul>
+                    {% if session['hari'] == 'admin' %}
+                        <li><a href="/user">Lihat Data Keseluruhan User</a></li>
+                        <li><a href="/mahasiswa">Lihat Data Mahasiswa</a></li>
+                        <li><a href="/dosen">Lihat Data Dosen</a></li>
+                        <li><a href="/mk">Lihat Data Mata Kuliah</a></li>
+                        <li><a href="/admin">Lihat Data Admin</a></li>
+                        <li><a href="/pubdosen">Lihat Publikasi Dosen</a></li>
+                        <li><a href="/bimbingan">Lihat Data Bimbingan</a></li>
+                        <li><a href="/kalender_akademik">Lihat Kalender Akademik</a></li>
+                        <li><a href="/pertemuan">Lihat Pertemuan</a></li>
+                    {% elif session['hari'] == 'dosen' %}
+                        <li><a href="/user/editDSN">Edit Data diri</a></li>
+                        <li><a href="/pubdosen">Lihat Publikasi Dosen</a></li>
+                        <li><a href="/bimbingan/mhs">Lihat Data Bimbingan</a></li>
+                        <li><a href="/pertemuan">Lihat Pertemuan</a></li>
+                    {% elif session['hari'] == 'mahasiswa' %}
+                        <li><a href="/user/editMHS">Edit Data diri</a></li>
+                        <li><a href="/pertemuan">Lihat Pertemuan</a></li>
+                        <li><a href="/bimbingan/UImhs_edit">Lihat Data Bimbingan</a></li>
+                    {% endif %}
+                </ul>
+            </nav>
+            <div class="logout">
+                <box-icon><a href="/login"><i class='bx bx-log-out'></i>&nbsp;&nbsp;Log out</a></box-icon>
+            </div>
+        </aside>
+        <section class="container-content">
+            <h3>Tambah Pertemuan</h3>
+            <a href="/pertemuan"><button>Kembali</button></a><br><br>
+            <div class="container-table">
+                <form action="/pertemuan/store" method="POST"enctype="multipart/form-data">
+                    <div class="form-group">
+                        <div class="group">
+                            <input type="text" id="dosen_id" name="dosen_id" required />
+                            <span class="highlight"></span><span class="bar"></span>
+                            <label for="dosen_id">ID Dosen:</label>
+                        </div>
+                        <div class="group">
+                            <input type="text" id="mhs_id" name="mhs_id" required />
+                            <span class="highlight"></span><span class="bar"></span>
+                            <label for="mhs_id">ID Mahasiswa:</label>
+                        </div>
+                        <div class="group">
+                            <div class="select-container"><br><br>
+                            <select id="hari" name="hari" required>
+                                <option value="Senin">Senin</option>
+                                <option value="Selasa">Selasa</option>
+                                <option value="Rabu">Rabu</option>
+                                <option value="Kamis">Kamis</option>
+                                <option value="Jumat">Jumat</option>
+                                <option value="Sabtu">Sabtu</option>
+                                <option value="Minggu">Minggu</option>
+                            </select>
+                            </div>
+                            <label for="hari">Hari:</label>
+                        </div>
+                        <div class="group"><br><br>
+                            <input type="datetime-local" id="waktu" name="waktu" required />
+                            <span class="highlight"></span><span class="bar"></span>
+                            <label for="waktu">Waktu:</label>
+                        </div>
+                        <div class="group">
+                            <div class="select-container"><br><br>
+                            <select id="jenis" name="jenis" required>
+                                <option value="UTS">UTS</option>
+                                <option value="UAS">UAS</option>
+                                <option value="KULIAH">Kuliah</option>
+                            </select>
+                            </div>
+                            <label for="jenis">Jenis:</label>
+                        </div>
+                        <div class="group">
+                            <div class="select-container"><br><br>
+                            <select id="absensi" name="absensi" required>
+                                <option value="Hadir">Hadir</option>
+                                <option value="Tidak Hadir">Tidak Hadir</option>
+                                <option value="Izin">Izin</option>
+                            </select>
+                            </div>
+                            <label for="absensi">Absensi:</label>
+                        </div>
+                    </div>
+                    <input type="submit" value="Submit" class="submit-button">
+                </form>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

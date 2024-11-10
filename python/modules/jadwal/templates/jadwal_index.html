@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Data Jadwal</title>
+        <link rel="stylesheet" href="/static/style.css" />
+    </head>
+    <body>
+        <h3> Data Jadwal</h3>
+        <a href="/jadwal/create"><button>Tambah</button></a>
+        <a href="/"><button>Kembali</button></a><br><br>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID Jadwal</th>
+                    <th>ID Dosen</th>
+                    <th>ID Mata Kuliah</th>
+                    <th>ID Pertemuan</th>
+                    <th colspan="2">Aksi</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for obj in data %}
+                <tr>
+                    <td>{{ obj.jdwl_id }}</td>
+                    <td>{{ obj.dosen_id }}</td>
+                    <td>{{ obj.mk_id }}</td>
+                    <td>{{ obj.pertemuan_id }}</td>
+                    <td><a href="/jadwal/edit/{{ obj.jdwl_id }}" class="edit-button">Edit</a></td>
+                    <td><a href="/jadwal/delete/{{ obj.jdwl_id }}" title="delete" class="delete-button" onclick="return confirm('Anda yakin untuk menghapus data ini?')">Hapus</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </body>
+</html>

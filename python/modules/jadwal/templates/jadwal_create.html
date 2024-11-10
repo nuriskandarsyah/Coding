@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Tambah Jadwal</title>
+        <link rel="stylesheet" href="/static/style.css" />
+    </head>
+    <body>
+        <h3>Tambah Jadwal</h3>
+        <a href="/Jadwal"><button>Kembali</button></a><br><br>
+        <form action="/Jadwal/store" method="POST">
+            <label for="dosen_id">ID dosen_id:</label><br>
+            <input type="text" id="dosen_id" name="dosen_id" required><br>
+            <label for="mk_id">Mata Kuliah:</label><br>
+            <input type="text" id="mk_id" name="mk_id" required><br>
+            <label for="pertemuan_id">ID pertemuan_id:</label><br>
+            <input type="text" id="pertemuan_id" name="pertemuan_id" required><br>
+            <br>
+            <input type="submit" value="Submit" class="submit-button">
+        </form>
+    </body>
+</html>

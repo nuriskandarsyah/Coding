@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Edit Jadwal</title>
+        <link rel="stylesheet" href="/static/style.css" />
+    </head>
+    <body>
+        <h3>Edit Jadwal</h3>
+        <a href="/jadwal"><button>Kembali</button></a><br><br>
+        <form action="/jadwal/update/{{ obj.jdwl_id }}" method="POST">
+            <label for="dosen_id">ID Dosen:</label><br>
+            <input type="text" id="dosen_id" name="dosen_id" required value="{{ obj.dosen_id }}"><br>
+            <label for="mk_id">Mata Kuliah:</label><br>
+            <input type="text" id="mk_id" name="mk_id" required value="{{ obj.mk_id }}"><br>
+            <label for="pertemuan_id">ID Pertemuan:</label><br>
+            <input type="text" id="pertemuan_id" name="pertemuan_id" required value="{{ obj.pertemuan_id }}"><br>
+            <br>
+            <input type="submit" value="Submit" class="submit-button">
+        </form>
+    </body>
+</html>
