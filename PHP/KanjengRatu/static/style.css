@@ -1,0 +1,91 @@
+/* General Reset */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Arial', sans-serif;
+  background-color: #b1b17d;
+}
+
+.banner{
+  width: 100%;
+  background-image: linear-gradient(rgb(0, 0, 0, 0.1), rgba(0,0,0,0.1)), url('bg.png');
+  background-size: cover;
+  background-position: center;
+  justify-content: center;
+  align-items: center;
+}
+.menu-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.menu-container h1,
+.menu-container h2 {
+  margin: 0;
+  padding: 10px 0;
+  color: #f4e4c4;
+  text-align: center;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.menu-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  align-items: center;
+  width: 100%;
+  padding: 20px;
+}
+
+.menu-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: rgba(244, 228, 196, 0.3);
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  gap: 50px;
+}
+
+.menu-item img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 5px solid #254923;
+  padding: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.menu-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #254923;
+  border-radius: 20px;
+  padding: 55px 170px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif, sans-serif;
+}
+
+.menu-details .name {
+  font-size: 20px;
+  color: #254923;
+  background-color: #f4e4c4;
+  border-radius: 20px;
+  padding: 10px 30px;
+  font-weight: bold;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.menu-details .price {
+  font-size: 18px;
+  color: #fff;
+  text-align: center;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 10px;
+}

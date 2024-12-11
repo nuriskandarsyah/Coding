@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/style.css">
+    <title>Menu Carousel</title>
+</head>
+<body>
+<div class="banner">
+    <div class="login-form">
+        <div class="carousel-container">
+            <div class="carousel">
+                <!-- Item 1 -->
+                <div class="carousel-item">
+                    <img src="static/kp.png" alt="Donburi">
+                    <h3>Donburi</h3>
+                </div>
+                <!-- Item 2 -->
+                <div class="carousel-item">
+                    <img src="static/plankton.png" alt="Hidangan Pembuka">
+                    <h3>Hidangan Pembuka</h3>
+                </div>
+            </div>
+
+            <!-- Tombol Navigasi -->
+            <button class="carousel-button prev">&lt;</button>
+            <button class="carousel-button next">&gt;</button>
+        </div>
+
+        <!-- Indikator Navigasi -->
+        <div class="carousel-indicators">
+            <span class="active" data-index="0"></span>
+            <span data-index="1"></span>
+        </div>
+
+        <script>
+            const carousel = document.querySelector('.carousel');
+            const items = document.querySelectorAll('.carousel-item');
+            const indicators = document.querySelectorAll('.carousel-indicators span');
+            const prevButton = document.querySelector('.carousel-button.prev');
+            const nextButton = document.querySelector('.carousel-button.next');
+            let currentIndex = 0;
+
+            function updateCarousel() {
+                // Update posisi carousel
+                const offset = -currentIndex * 100;
+                carousel.style.transform = `translateX(${offset}%)`;
+
+                // Update indikator aktif
+                indicators.forEach((indicator, index) => {
+                    indicator.classList.toggle('active', index === currentIndex);
+                });
+            }
+
+            // Tombol Next
+            nextButton.addEventListener('click', () => {
+                currentIndex = (currentIndex + 1) % items.length;
+                updateCarousel();
+            });
+
+            // Tombol Prev
+            prevButton.addEventListener('click', () => {
+                currentIndex = (currentIndex - 1 + items.length) % items.length;
+                updateCarousel();
+            });
+
+            // Klik pada indikator
+            indicators.forEach((indicator) => {
+                indicator.addEventListener('click', () => {
+                    currentIndex = parseInt(indicator.getAttribute('data-index'));
+                    updateCarousel();
+                });
+            });
+        </script>
+    </div>
+</div>
+</body>
+</html>
